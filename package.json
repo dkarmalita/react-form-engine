@@ -1,0 +1,61 @@
+{
+  "name": "@kard/react-form-engine",
+  "version": "0.1.0",
+  "description": "Source of react-form-engine",
+  "main": "lib/library.js",
+  "scripts": {
+    "build": "webpack --mode production",
+    "start": "webpack  --mode development --progress --colors --watch",
+    "clean": "rm -rf node_modules && rm -rf ./lib",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": ">=6"
+  },
+  "browserslist": {
+    "development": [
+      "last 2 chrome versions",
+      "last 2 firefox versions",
+      "last 2 edge versions"
+    ],
+    "production": [
+      ">1%",
+      "last 4 versions",
+      "Firefox ESR",
+      "not ie < 11"
+    ]
+  },
+  "files": [
+    "lib",
+    "src"
+  ],
+  "keywords": [],
+  "author": {
+    "name": "Dmitriy Karmalita",
+    "email": "dmitriy.karmalita@gmail.com",
+    "url": "https://github.com/dkarmalita"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dkarmalita/react-form-engine.git/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dkarmalita/react-form-engine.git"
+  },
+  "deprecated": false,
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "react": "^16.4.0",
+    "webpack": "^4.11.1",
+    "webpack-cli": "^3.0.2"
+  },
+  "peerDependencies": {
+    "react": "^16.4.0"
+  }
+}
