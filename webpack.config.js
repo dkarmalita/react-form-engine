@@ -36,11 +36,18 @@ module.exports = {
   },
 
   // externals section are generating from the peerDependencies section of the package.json
-  externals: peersToExternals(pkg.peerDependencies),
+  // externals: peersToExternals(pkg.peerDependencies),
 
-  // externals : {
-  //   react: 'react' // this package has to be installed as dev & peer dependency
-  // },
+  externals : {
+    // react: 'react' // this package has to be installed as dev & peer dependency
+    // react: React,
+    react : {
+      commonjs: 'react',
+      commonjs2: 'react',
+      umd: 'react',
+      root: 'React' // indicates global variable
+    }
+  },
 
   module: {
     rules: [
