@@ -39,8 +39,6 @@ module.exports = {
   // externals: peersToExternals(pkg.peerDependencies),
 
   externals : {
-    // react: 'react' // this package has to be installed as dev & peer dependency
-    // react: React,
     react : {
       commonjs: 'react',
       commonjs2: 'react',
