@@ -58,6 +58,15 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['*', '.js', '.jsx']
+    extensions: ['*', '.js', '.jsx'],
+    modules: [
+      "node_modules",
+      'packages',
+      'src'
+    ],
+    mainFields: [
+      'module',
+      'main'
+    ],
   },
 };
