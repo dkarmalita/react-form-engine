@@ -6,16 +6,16 @@
  * @param  {Array} arrB - array of unique errors ids to add to errorsBuffer
  * @return {Array]} - combined array of errors
  */
-export const combineArraysUnique = ( arrA = [], arrB = []) => {
-  const acc = [].concat( arrA )
+export const combineArraysUnique = ( a1 = [], a2 = []) => {
+  const acc = []//.concat( arrA )
+
+  const addEl = (el) => { if( !~acc.indexOf( el ) ){ acc.push( el ) } }
 
   // Add only items are not in the list yet
-  arrB.forEach( errId => {
-    if( !~arrA.indexOf( errId )){
-    // ref: https://www.joezimjs.com/javascript/great-mystery-of-the-tilde/
-      acc.push( errId )
-    }
-  })
+  a1.forEach( addEl )
+
+  // Add only items are not in the list yet
+  a2.forEach( addEl )
 
   return acc
 }

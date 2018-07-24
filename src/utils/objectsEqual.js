@@ -1,12 +1,12 @@
 // @kard js snippet
 /**
- * isObjectsEqual Deeply chack two objects for equality
+ * objectsEqual Deeply chack two objects for equality
  * idea: https://stackoverflow.com/a/16788517
  * @param  {Object}  x - the first object to compare
  * @param  {Object}  y - the second object to compare
  * @return {Boolean} - true when objects equal, false in another case
  */
-export function isObjectsEqual( x, y ){
+export function objectsEqual( x, y ){
   if( x === null || x === undefined || y === null || y === undefined ){ return x === y }
 
   // after this just checking type of one would be enough
@@ -30,5 +30,5 @@ export function isObjectsEqual( x, y ){
   // recursive object equality check
   var p = Object.keys( x )
   return Object.keys( y ).every( function( i ){ return p.indexOf( i ) !== -1 })
-        && p.every( function( i ){ return isObjectsEqual( x[i], y[i]) })
+        && p.every( function( i ){ return objectsEqual( x[i], y[i]) })
 }
