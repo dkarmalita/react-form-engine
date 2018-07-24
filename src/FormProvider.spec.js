@@ -1,4 +1,4 @@
-import { shallow, mount } from 'enzyme';
+import { mount } from 'enzyme';
 
 import React, { Component } from 'react'
 import { FormProvider, withFormContext } from '../src/FormProvider.jsx'
@@ -16,7 +16,7 @@ import { FormProvider, withFormContext } from '../src/FormProvider.jsx'
     focused: false,
     reset: jest.fn()
   }
-  const cb = jest.fn()
+  const setStateCb = jest.fn()
 
 // ----------------------------------------------------------------------------
 
@@ -63,8 +63,8 @@ describe('FormProvider', function () {
   })
 
   it('setFieldState (cb)', function () {
-    formLink.setFieldState(testFieldName, testStateUpdate, cb)
-    expect( cb ).toHaveBeenCalled()
+    formLink.setFieldState(testFieldName, testStateUpdate, setStateCb)
+    expect( setStateCb ).toHaveBeenCalled()
   })
 
   it('getFormState', function () {
