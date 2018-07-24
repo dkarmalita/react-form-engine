@@ -47,11 +47,9 @@ describe('FormProvider', function () {
       <TestProbe />
     </FormProvider>
   );
+
   const instance = wrapper.instance();
   const formLink = ref.props.formLink
-
-  // console.log(instance) // FormProvider
-  // console.log(formLink) // TestProbe
 
   it('getFieldInitialValue', function () {
     expect( formLink.getFieldInitialValue(testFieldName) )
@@ -91,6 +89,7 @@ describe('FormProvider', function () {
 })
 
 describe('FormProvider (alternative cases)', function () {
+
   const wrapper = mount(
     <FormProvider
       onChange={ (x) => lastFormProviderOnChange = x }
