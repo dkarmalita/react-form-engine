@@ -1,10 +1,8 @@
 import { mount } from 'enzyme';
-// ref: https://github.com/airbnb/enzyme/blob/master/docs/api/mount.md
-// https://github.com/airbnb/enzyme/issues/346#issuecomment-214435925
 
 import React, { Component } from 'react'
-import { FormProvider, withFormContext } from '../src/FormProvider'
-import { asField, asInputField, asCheckboxField, asRadioButtonField } from '../src/FormComponent'
+import { FormProvider, withFormContext } from './FormProvider'
+import { asField } from './FormComponent'
 
 // >> -------------------------------------------------------------------------
 
