@@ -147,6 +147,7 @@ module.exports = {
     "/node_modules/",
     "/test/",
     "/*.bak/",
+    "/*.bak.js/",
   ],
 
   // The regexp pattern Jest uses to detect test files

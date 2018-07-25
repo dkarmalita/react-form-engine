@@ -70,7 +70,7 @@ export const asField = ( WrappedField, defaultValue = '' ) => {
       if( !this._checkFormContext()){ return }
       const { fieldName, formLink } = this.props
       const oldState = this._getFieldState()
-      if( objectsEqual( oldState, newState )){ return } // prevent state update if no changes in it
+      // if( objectsEqual( oldState, newState )){ return } // prevent state update if no changes in it
       formLink.setFieldState( fieldName, newState )
     }
 
