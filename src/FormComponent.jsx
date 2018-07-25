@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { objectsEqual } from './utils/objectsEqual'
+// import { objectsEqual } from './utils/objectsEqual'
 import { combineArraysUnique as combineErrors } from './utils/combineArraysUnique'
 import { withFormContext } from './FormProvider'
 
