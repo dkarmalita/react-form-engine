@@ -69,4 +69,8 @@ module.exports = {
       'main'
     ],
   },
+
+  // optimization: {
+  //     minimize: false,
+  // },
 };
