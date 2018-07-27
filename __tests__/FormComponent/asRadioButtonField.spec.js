@@ -1,8 +1,8 @@
 import { mount } from 'enzyme';
 
 import React, { Component } from 'react'
-import { FormProvider, withFormContext } from './FormProvider'
-import { asRadioButtonField } from './FormComponent'
+import { FormProvider, withFormContext } from 'FormProvider'
+import { asRadioButtonField } from 'FormComponent'
 
 // >> -------------------------------------------------------------------------
 

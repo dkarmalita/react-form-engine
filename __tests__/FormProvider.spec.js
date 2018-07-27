@@ -1,7 +1,7 @@
 import { mount } from 'enzyme';
 
 import React, { Component } from 'react'
-import { FormProvider, withFormContext } from '../src/FormProvider'
+import { FormProvider, withFormContext } from 'FormProvider'
 
 // >> -------------------------------------------------------------------------
 

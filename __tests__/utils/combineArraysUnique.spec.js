@@ -1,4 +1,4 @@
-import { combineArraysUnique } from './combineArraysUnique'
+import { combineArraysUnique } from 'utils/combineArraysUnique'
 
 describe('utils/combineArraysUnique', function () {
   const arrA = ['A', 'A', 'B', 'B', 'D']

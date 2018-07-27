@@ -1,4 +1,4 @@
-import { objectsEqual } from './objectsEqual'
+import { objectsEqual } from 'utils/objectsEqual'
 
 const assert = { isTrue: function (x) { expect(x).toBeTruthy() }, isFalse: function (x) { expect(x).toBeFalsy(); } }
 

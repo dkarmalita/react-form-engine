@@ -62,9 +62,10 @@ module.exports = {
   // globals: {},
 
   // An array of directory names to be searched recursively up from the requiring module's location
-  // moduleDirectories: [
-  //   "node_modules"
-  // ],
+  moduleDirectories: [
+    "node_modules",
+    "<rootDir>/src/",
+  ],
 
   // An array of file extensions your modules use
   // moduleFileExtensions: [
@@ -119,7 +120,7 @@ module.exports = {
   // runner: "jest-runner",
 
   // The paths to modules that run some code to configure or set up the testing environment before each test
-  setupFiles: ['./test/jestSetup'],
+  setupFiles: ['<rootDir>/config/jestSetup'],
 
   // The path to a module that runs some code to configure or set up the testing framework before each test
   // setupTestFrameworkScriptFile: null,
@@ -148,6 +149,7 @@ module.exports = {
     "/test/",
     "/*.bak/",
     "/*.bak.js/",
+    "/*.draft.*/",
   ],
 
   // The regexp pattern Jest uses to detect test files

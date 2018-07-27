@@ -1,8 +1,8 @@
 import { mount } from 'enzyme';
 
 import React, { Component } from 'react'
-import { FormProvider, withFormContext } from './FormProvider'
-import { asInputField } from './FormComponent'
+import { FormProvider, withFormContext } from 'FormProvider'
+import { asCheckboxField } from 'FormComponent'
 
 // >> -------------------------------------------------------------------------
 
@@ -21,7 +21,7 @@ import { asInputField } from './FormComponent'
       }
       render(){
         fieldRef = this
-        return <input { ...this.props }/>
+        return <input { ...this.props } type='checkbox' />
       }
     }
 
@@ -35,7 +35,7 @@ import { asInputField } from './FormComponent'
       }
     }
 
-    const TestProbe = asInputField( _TestProbe )
+    const TestProbe = asCheckboxField( _TestProbe )
     const StateMonitor = withFormContext( _StateMonitor )
 
     const wrapper = mount(
@@ -64,27 +64,36 @@ import { asInputField } from './FormComponent'
 
 // << -------------------------------------------------------------------------
 
-describe('asInputField', function () {
+describe('asCheckboxField', function () {
 
   const { wrapper, formLink, fieldLink, getFieldState } = renderTestForm({
-    formProps: { initialValue: { testFieldName: 'initial value'} },
-    fieldProps: { fieldName: 'testFieldName' }
+    formProps: { initialValue: { testFieldName: true } },
+    fieldProps: { fieldName: 'testFieldName',  }
   })
 
-  it('simulate change', () => {
-    const event = {
-      preventDefault() {},
-      target: { value: 'the-value' }
-    };
+  it('simulate click', () => {
 
-    wrapper.find('input').simulate('change', event)
+    wrapper.find('input').simulate('click')
     expect( getFieldState() ).toEqual({
       "dirty": true,
       "errors": [],
       "focused": false,
       "touched": false,
       "valid": true,
-      "value": "the-value",
+      "value": false,
+    })
+  })
+
+  it('simulate keypress', () => {
+
+    wrapper.find('input').simulate('keypress')
+    expect( getFieldState() ).toEqual({
+      "dirty": false,
+      "errors": [],
+      "focused": false,
+      "touched": false,
+      "valid": true,
+      "value": true,
     })
   })
 })

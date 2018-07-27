@@ -1,8 +1,8 @@
 import { mount } from 'enzyme';
 
 import React, { Component } from 'react'
-import { FormProvider, withFormContext } from './FormProvider'
-import { asCheckboxField } from './FormComponent'
+import { FormProvider, withFormContext } from 'FormProvider'
+import { asInputField } from 'FormComponent'
 
 // >> -------------------------------------------------------------------------
 
@@ -21,7 +21,7 @@ import { asCheckboxField } from './FormComponent'
       }
       render(){
         fieldRef = this
-        return <input { ...this.props } type='checkbox' />
+        return <input { ...this.props }/>
       }
     }
 
@@ -35,7 +35,7 @@ import { asCheckboxField } from './FormComponent'
       }
     }
 
-    const TestProbe = asCheckboxField( _TestProbe )
+    const TestProbe = asInputField( _TestProbe )
     const StateMonitor = withFormContext( _StateMonitor )
 
     const wrapper = mount(
@@ -64,36 +64,27 @@ import { asCheckboxField } from './FormComponent'
 
 // << -------------------------------------------------------------------------
 
-describe('asCheckboxField', function () {
+describe('asInputField', function () {
 
   const { wrapper, formLink, fieldLink, getFieldState } = renderTestForm({
-    formProps: { initialValue: { testFieldName: true } },
-    fieldProps: { fieldName: 'testFieldName',  }
+    formProps: { initialValue: { testFieldName: 'initial value'} },
+    fieldProps: { fieldName: 'testFieldName' }
   })
 
-  it('simulate click', () => {
+  it('simulate change', () => {
+    const event = {
+      preventDefault() {},
+      target: { value: 'the-value' }
+    };
 
-    wrapper.find('input').simulate('click')
+    wrapper.find('input').simulate('change', event)
     expect( getFieldState() ).toEqual({
       "dirty": true,
       "errors": [],
       "focused": false,
       "touched": false,
       "valid": true,
-      "value": false,
-    })
-  })
-
-  it('simulate keypress', () => {
-
-    wrapper.find('input').simulate('keypress')
-    expect( getFieldState() ).toEqual({
-      "dirty": false,
-      "errors": [],
-      "focused": false,
-      "touched": false,
-      "valid": true,
-      "value": true,
+      "value": "the-value",
     })
   })
 })

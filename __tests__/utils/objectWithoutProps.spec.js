@@ -1,4 +1,4 @@
-import { objectWithoutProps } from './objectWithoutProps.js'
+import { objectWithoutProps } from 'utils/objectWithoutProps.js'
 
 describe('utils/objectWithoutProps', function () {
   const objA = { A:'a', B:'b', C:'c' }

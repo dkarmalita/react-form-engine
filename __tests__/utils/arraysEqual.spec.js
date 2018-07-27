@@ -1,4 +1,4 @@
-import { arraysEqual } from './arraysEqual'
+import { arraysEqual } from 'utils/arraysEqual'
 
 describe('utils/arraysEqual', function () {
   const arrA = ['A', 'A', 'B', 'B', 'D']
