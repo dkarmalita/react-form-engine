@@ -70,6 +70,7 @@ module.exports = {
     ],
   },
 
+  // ref: https://habr.com/post/350370/
   // optimization: {
   //     minimize: false,
   // },
