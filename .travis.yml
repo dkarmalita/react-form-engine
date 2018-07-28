@@ -12,6 +12,6 @@ script:
   - npm test
 after_success:
   - ./node_modules/.bin/codecov
-#branches:
-#  except:
-#    - /^v\d+\.\d+\.\d+$/
+branches:
+ except:
+   - /^v\d+\.\d+\.\d+$/
