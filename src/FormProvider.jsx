@@ -6,7 +6,18 @@ const FormContext = React.createContext( null )
 
 export class FormProvider extends Component {
 
+  static defaultProps = {
+    initialValue : {},
+    onChange     : () => {},
+    onReady      : () => {},
+  }
+
   state = { formBuffer: {}, blocked: false }
+
+  constructor( props ){
+    super( props )
+    this.props.onReady( this )
+  }
 
   _getFormValue(){
     const { formBuffer } = this.state
@@ -52,12 +63,12 @@ export class FormProvider extends Component {
       }), () => {
         const { onChange } = this.props
         if( cb ){ cb() }
-        if( onChange ){ onChange( this.state.formBuffer ) }
+        onChange( this.state.formBuffer )
       }),
 
       getFieldState : ( fieldName ) => this.state.formBuffer[fieldName],
 
-      getFieldInitialValue : ( fieldName ) => ( this.props.initialValue || {})[fieldName],
+      getFieldInitialValue : ( fieldName ) => this.props.initialValue[fieldName],
 
       /* form methods */
 

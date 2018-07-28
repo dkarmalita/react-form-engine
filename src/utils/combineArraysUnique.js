@@ -7,9 +7,9 @@
  * @return {Array]} - combined array of errors
  */
 export const combineArraysUnique = ( a1 = [], a2 = []) => {
-  const acc = []//.concat( arrA )
+  const acc = []// .concat( arrA )
 
-  const addEl = (el) => { if( !~acc.indexOf( el ) ){ acc.push( el ) } }
+  const addEl = ( el ) => { if( !~acc.indexOf( el )){ acc.push( el ) } }
 
   // Add only items are not in the list yet
   a1.forEach( addEl )

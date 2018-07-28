@@ -17,6 +17,7 @@ const helpLink_formBoundaries = 'http://example.com'
  * - dirty {Bool} - true while the field contains changed value
  * - touched {Bool} - true while the field is/was focused
  * - valid {Bool} - true while the field contains no errors
+ * - declined {Bool} - true when the latest value was declined by onTest handler
  */
 export const asField = ( WrappedField, defaultValue = '' ) => {
   class _FormComponent extends Component {
@@ -25,6 +26,7 @@ export const asField = ( WrappedField, defaultValue = '' ) => {
       // defaultValue: '',
       fieldName  : '',
       onValidate : () => [],
+      onTest     : () => true,
     }
 
     constructor( props ){
@@ -108,10 +110,14 @@ export const asField = ( WrappedField, defaultValue = '' ) => {
      * @return {Object} - field state within all data propeties
      */
     _prepareState( value ){
+      const declined = !this.props.onTest( value )
+      if( declined ){
+        return { ...this._getFieldState(), declined }
+      }
       const dirty = value !== this._getInitialValue()
       const errors = this.props.onValidate( value, this._invalidate )
       const valid = errors.length === 0
-      return { ...this._getFieldState(), value, dirty, errors, valid }
+      return { ...this._getFieldState(), value, dirty, errors, valid, declined }
     }
 
     /**
@@ -167,6 +173,7 @@ export const asField = ( WrappedField, defaultValue = '' ) => {
       const {       /* = known field properties = */
         fieldName,  // used as the field name in the form buffer /* --and as a value of name prop-- */
         onValidate, // used each time when a change happen to validate the updated value
+        onTest,
         formLink,   // provides the form-level methods
         // option,  // for multi-controls fields, contains option value for this control
         ...other
