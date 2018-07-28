@@ -16,7 +16,13 @@ export class FormProvider extends Component {
 
   constructor( props ){
     super( props )
-    this.props.onReady( this )
+    this._getFormValue = this._getFormValue.bind( this )
+    this._getFormState = this._getFormState.bind( this )
+    this._resetForm = this._resetForm.bind( this )
+    this._getFormLink = this._getFormLink.bind( this )
+    const { formBuffer } = this.state
+    const formLink = this._getFormLink()
+    this.props.onReady({ formBuffer, formLink })
   }
 
   _getFormValue(){
@@ -44,12 +50,7 @@ export class FormProvider extends Component {
     Object.keys( formBuffer ).map( fieldName => formBuffer[fieldName].reset())
   }
 
-  /**
-   * `render` is only used to render the component's children in the context of the
-   * `formLink` structure which contains all of the necessary form-wide fields.
-   * @return {Component}
-   */
-  render(){
+  _getFormLink(){
     const formLink = {
 
       /* field mathods */
@@ -82,7 +83,16 @@ export class FormProvider extends Component {
 
       resetForm : () => this._resetForm(),
     }
+    return formLink
+  }
 
+  /**
+   * `render` is only used to render the component's children in the context of the
+   * `formLink` structure which contains all of the necessary form-wide fields.
+   * @return {Component}
+   */
+  render(){
+    const formLink = this._getFormLink()
     return (
       <FormContext.Provider value={formLink}>
         {this.props.children}
