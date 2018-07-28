@@ -16,13 +16,15 @@ export class FormProvider extends Component {
 
   constructor( props ){
     super( props )
+
     this._getFormValue = this._getFormValue.bind( this )
     this._getFormState = this._getFormState.bind( this )
     this._resetForm = this._resetForm.bind( this )
     this._getFormLink = this._getFormLink.bind( this )
+
     const { formBuffer } = this.state
     const formLink = this._getFormLink()
-    this.props.onReady({ formBuffer, formLink })
+    this.props.onReady( formLink )
   }
 
   _getFormValue(){
