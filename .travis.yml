@@ -14,4 +14,4 @@ after_success:
   - ./node_modules/.bin/codecov
 branches:
  except:
-   - /^v\d+\.\d+\.\d+$/
+   - /^v\d+\.\d+\.\d+$/ # only branches tagged with v1.x.x will be tested
