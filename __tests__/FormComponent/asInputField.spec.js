@@ -79,6 +79,7 @@ describe('asInputField', function () {
 
     wrapper.find('input').simulate('change', event)
     expect( getFieldState() ).toEqual({
+      "declined": false,
       "dirty": true,
       "errors": [],
       "focused": false,

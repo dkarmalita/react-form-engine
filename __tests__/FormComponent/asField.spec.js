@@ -72,6 +72,7 @@ describe('asField', function () {
 
   it('set initial state', () => {
     expect( getFieldState() ).toEqual({
+      "declined": false,
       "dirty": false,
       "errors": [],
       "focused": false,
@@ -84,6 +85,7 @@ describe('asField', function () {
   it('update value', () => {
     fieldLink.onChange('updated value')
     expect( getFieldState() ).toEqual({
+      "declined": false,
       "dirty": true,
       "errors": [],
       "focused": false,
@@ -96,6 +98,7 @@ describe('asField', function () {
   it('restore value', () => {
     fieldLink.onChange('initial value')
     expect( getFieldState() ).toEqual({
+      "declined": false,
       "dirty": false,
       "errors": [],
       "focused": false,
@@ -108,6 +111,7 @@ describe('asField', function () {
   it('get focused', () => {
     fieldLink.onFocus()
     expect( getFieldState() ).toEqual({
+      "declined": false,
       "dirty": false,
       "errors": [],
       "focused": true,
@@ -120,6 +124,7 @@ describe('asField', function () {
   it('get unfocused', () => {
     fieldLink.onBlur()
     expect( getFieldState() ).toEqual({
+      "declined": false,
       "dirty": false,
       "errors": [],
       "focused": false,
@@ -165,6 +170,7 @@ describe('asField (special cases)', function () {
       fieldProps: { fieldName: 'testFieldName' }
     })
     expect( getFieldState() ).toEqual({
+      "declined": false,
       "dirty": false,
       "errors": [],
       "focused": false,
@@ -182,6 +188,7 @@ describe('asField (special cases)', function () {
 
     fieldLink.onChange('updated value')
     expect( getFieldState() ).toEqual({
+      "declined": false,
       "dirty": false,
       "errors": [],
       "focused": false,
@@ -201,6 +208,7 @@ describe('asField (special cases)', function () {
     })
 
     expect( getFieldState() ).toEqual({
+      "declined": false,
       "dirty": false,
       "errors": [ "error" ],
       "focused": false,
@@ -219,6 +227,7 @@ describe('asField (special cases)', function () {
           invalidate( value, ['Async Err'])
 
           expect( getFieldState() ).toEqual({
+            "declined": false,
             "dirty": false,
             "errors": [
               "error",
@@ -252,6 +261,7 @@ describe('asField (special cases)', function () {
           invalidate( 'changed' )
 
           expect( getFieldState() ).toEqual({
+            "declined": false,
             "dirty": false,
             "errors": [
               "error",
@@ -272,6 +282,29 @@ describe('asField (special cases)', function () {
     const { formLink, fieldLink, getFieldState } = renderTestForm({
       formProps: {},
       fieldProps: { fieldName: 'testFieldName', onValidate: handleOnValidate }
+    })
+  })
+
+  it('onTest declining', () => {
+
+    const tester = jest.fn()
+      .mockReturnValueOnce(true)
+      .mockReturnValue(false)
+
+    const { formLink, fieldLink, getFieldState } = renderTestForm({
+      formProps: {},
+      fieldProps: { fieldName: 'testFieldName', onTest: tester }
+    })
+
+    fieldLink.onChange('declined value')
+    expect( getFieldState() ).toEqual({
+      "declined": true,
+      "dirty": false,
+      "errors": [],
+      "focused": false,
+      "touched": false,
+      "valid": true,
+      "value": "",
     })
   })
 

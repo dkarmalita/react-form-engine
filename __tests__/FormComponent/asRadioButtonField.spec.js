@@ -75,6 +75,7 @@ describe('asCheckboxField', function () {
 
     wrapper.find('input').simulate('click')
     expect( getFieldState() ).toEqual({
+      "declined": false,
       "dirty": true,
       "errors": [],
       "focused": false,
