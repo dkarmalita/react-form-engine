@@ -7,9 +7,10 @@
   "scripts": {
     "build": "webpack --mode production",
     "start": "webpack  --mode development --progress --colors --watch",
-    "clean": "rm -rf node_modules && rm -rf ./lib",
+    "clean": "rm -rf node_modules && rm -rf ./lib && rm -rf ./coverage",
     "test": "jest",
-    "test:dev": "jest --watch"
+    "test:dev": "jest --watch",
+    "coverage": "open ./coverage/lcov-report/index.html"
   },
   "engines": {
     "node": ">=6"
