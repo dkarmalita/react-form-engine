@@ -8,9 +8,13 @@
     "build": "webpack --mode production",
     "start": "webpack  --mode development --progress --colors --watch",
     "clean": "rm -rf node_modules && rm -rf ./lib && rm -rf ./coverage",
+    "publish": "git push && git push --tags",
     "test": "jest",
     "test:dev": "jest --watch",
     "coverage": "open ./coverage/lcov-report/index.html"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "engines": {
     "node": ">=6"
