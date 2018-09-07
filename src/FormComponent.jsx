@@ -126,7 +126,7 @@ export const asField = ( WrappedField, defaultValue = '' ) => {
      */
     _setFieldValue( value ){
       if( this.props.disabled ){ return } // only an enabled field can update its value
-      this._setFieldState( this._prepareState( value ))
+      this._setFieldState( this._prepareState( this.props.normalize ? this.props.normalize(value) : value ))
     }
 
     /**
