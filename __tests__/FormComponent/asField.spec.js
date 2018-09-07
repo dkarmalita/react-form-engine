@@ -308,4 +308,26 @@ describe('asField (special cases)', function () {
     })
   })
 
+  it('normalize involving', () => {
+
+    const normalizer = jest.fn()
+      .mockReturnValue('normilized value')
+
+    const { formLink, fieldLink, getFieldState } = renderTestForm({
+      formProps: {},
+      fieldProps: { fieldName: 'testFieldName', normalize: normalizer }
+    })
+
+    fieldLink.onChange('raw value')
+    expect( getFieldState() ).toEqual({
+      "declined": false,
+      "dirty": true,
+      "errors": [],
+      "focused": false,
+      "touched": false,
+      "valid": true,
+      "value": "normilized value",
+    })
+  })
+
 })
