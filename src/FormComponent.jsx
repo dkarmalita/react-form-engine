@@ -176,6 +176,7 @@ export const asField = ( WrappedField, defaultValue = '' ) => {
         onTest,
         formLink,   // provides the form-level methods
         // option,  // for multi-controls fields, contains option value for this control
+        normalize,
         ...other
       } = this.props
       return other
